@@ -1,0 +1,87 @@
+version: '2'
+services:
+
+  # The Application
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=database"
+
+  # The Web Server
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    working_dir: /var/www
+    volumes_from:
+      - app
+    ports:
+      - 8080:80
+
+  # The Database
+  database:
+    image: mysql:5.6
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - "MYSQL_DATABASE=homestead"
+      - "MYSQL_USER=homestead"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+        - "33061:3306"
+
+volumes:
+  dbdata:
+
+# version: "2.2"
+
+# networks:
+#     onboarding-project-network:
+
+# volumes:
+#     mysqldata:
+#         driver: "local"
+
+# services:
+#     onboarding-project:
+#         container_name: onboarding-project
+#         build:
+#             context: .
+#             dockerfile: Dockerfile
+#         depends_on:
+#             - onboarding-mysql
+#         volumes:
+#             - .:/var/www/html/public
+#             - /var/www/html/public/vendor
+#             - /var/www/html/public/node_modules
+#         ports:
+#             - 8085:80
+#             - 443:443
+#         environment:
+#             - WEB_DOCUMENT_ROOT=/var/www/html/public/public
+#         networks:
+#             - onboarding-project-network
+#         restart: on-failure
+
+#     onboarding-mysql:
+#         container_name: onboarding-mysql
+#         image: mysql:5.7
+#         volumes:
+#             - mysqldata:/var/lib/mysql
+#         ports:
+#             - 3306:3306
+#         environment:
+#             MYSQL_DATABASE: onboarding
+#             MYSQL_USER: onboarding
+#             MYSQL_ROOT_PASSWORD: secret
+#             MYSQL_PASSWORD: secret
+#         networks:
+#             - onboarding-project-network
+#         restart: on-failure
