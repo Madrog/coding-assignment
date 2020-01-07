@@ -83,9 +83,15 @@
                 </div>
 
                 <p>
-                    to the Ensibuuko Onboarding
+                    to the Ensibuuko Coding Assignment
                 </p>
+
+                <div id="app">
+                    <example-component></example-component>
+                </div>
+
             </div>
         </div>
     </body>
+    <script src="{{ mix('/js/app.js') }}"></script>
 </html>
