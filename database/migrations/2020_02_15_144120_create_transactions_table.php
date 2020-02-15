@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('individual_id');
             $table->integer('amount');
             $table->enum('type', ['deposit', 'withdrawal', 'transfer']);
+            $table->foreign('individual_id')->references('id')->on('individuals');
             $table->timestamps();
         });
     }

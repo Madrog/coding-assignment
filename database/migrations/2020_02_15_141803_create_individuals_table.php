@@ -16,10 +16,11 @@ class CreateIndividualsTable extends Migration
         Schema::create('individuals', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('sacco_id');
-            $table->text('first_name');
-            $table->text('last_name');
-            $table->text('email');
-            $table->text('gender');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email');
+            $table->string('gender');
+            $table->foreign('sacco_id')->references('id')->on('saccos');
             $table->timestamps();
         });
     }
