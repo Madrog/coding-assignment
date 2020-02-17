@@ -21,3 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('/individuals', 'IndividualsController', [
     'except' => ['edit', 'show', 'store']
 ]);
+
+Route::resource('/saccos', 'SaccosController', [
+    'except' => ['edit', 'show', 'store']
+]);
+
+Route::resource('/transactions', 'TransactionsController', [
+    'except' => ['edit', 'show', 'store']
+]);

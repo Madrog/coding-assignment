@@ -20,8 +20,6 @@ class CreateIndividualsTable extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->string('gender');
-            $table->foreign('sacco_id')->references('id')->on('saccos');
-            $table->timestamps();
         });
     }
 

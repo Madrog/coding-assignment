@@ -6,10 +6,14 @@
                     <br>
                     <hr>
                     <br>
-                    <div class="panel-heading">Vuejs also welcomes you!</div>
+                    <div class="panel-heading">Menu</div>
                     <br>
                     <div class="panel-body">
-                        This is vue code being loaded!
+                        <ul>
+                            <li><a href="#">Individuals</a></li>
+                            <li><a href="#">SACCOs</a></li>
+                            <li><a href="#">Transactions</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
