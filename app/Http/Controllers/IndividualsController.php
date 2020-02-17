@@ -10,6 +10,6 @@ class IndividualsController extends Controller
 {
     public function index()
     {
-        return response(Individual::all()->jsonSerialize(), Response::HTTP_OK);
+        return response(Individual::all()->take(100)->jsonSerialize(), Response::HTTP_OK);
     } 
 }

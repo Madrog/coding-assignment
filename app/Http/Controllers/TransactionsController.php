@@ -10,6 +10,6 @@ class TransactionsController extends Controller
 {
     public function index()
     {
-        return response(Transaction::all()->jsonSerialize(), Response::HTTP_OK);
+        return response(Transaction::all()->take(50)->jsonSerialize(), Response::HTTP_OK);
     }
 }

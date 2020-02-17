@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Resources\IndividualResource;
+use App\Http\Resources\IndividualsCollection;
+use App\Individual;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('/individuals', 'IndividualsController', [
-    'except' => ['edit', 'show', 'store']
-]);
+Route::get('/individuals/{id}', function(Individual $id) {
+    return new IndividualResource($id);
+});
 
-Route::resource('/saccos', 'SaccosController', [
-    'except' => ['edit', 'show', 'store']
-]);
-
-Route::resource('/transactions', 'TransactionsController', [
-    'except' => ['edit', 'show', 'store']
-]);
+Route::get('/individuals', function() {
+    return IndividualResource::collection(Individual::all())->take(100);
+});
