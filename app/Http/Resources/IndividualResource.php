@@ -20,7 +20,8 @@ class IndividualResource extends Resource
             'email' => $this->email,
             'gender' => $this->gender,
             'sacco' => $this->sacco->name,
-            'totdep' => $this->transaction->where('type', 'deposit')->sum('amount')
+            'totdep' => $this->transaction->where('type', 'deposit')->sum('amount'),
+            'totwith' => $this->transaction->where('type', 'withdrawal')->sum('amount')
         ];
     }
 }
