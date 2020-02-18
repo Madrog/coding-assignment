@@ -3,8 +3,13 @@
 use Illuminate\Http\Request;
 use App\Http\Resources\IndividualResource;
 use App\Http\Resources\IndividualsCollection;
+use App\Http\Resources\SaccosResource;
+use App\Http\Resources\SaccosCollection;
+use App\Http\Resources\TransactionsResource;
+use App\Http\Resources\TransactionsCollection;
 use App\Individual;
-
+use App\Sacco;
+use App\Transaction;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,5 +31,29 @@ Route::get('/individuals/{id}', function(Individual $id) {
 });
 
 Route::get('/individuals', function() {
-    return IndividualResource::collection(Individual::all())->take(100);
+    $list = collect(IndividualResource::collection(Individual::all()));
+    $sorted = $list->sortByDesc('totdep');
+    $sorted->values()->all();
+    $individuals = $sorted->take(100);
+    return $individuals->values()->all();
+});
+
+Route::get('/saccos/{id}', function(Sacco $id) {
+    return new SaccoResource($id);
+});
+
+Route::get('/saccos', function(){
+    return SaccosResource::collection(Sacco::all());
+});
+
+Route::get('/transactions/{id}', function(transaction $id) {
+    return new TransactionsResource($id);
+});
+
+Route::get('/transactions', function(){
+    $collection = collect(TransactionsResource::collection(Transaction::all()));
+    $sorted = $collection->sortByDesc('id');
+    $sorted->values()->all();
+    $transactions = $sorted->take(50);
+    return $transactions;
 });

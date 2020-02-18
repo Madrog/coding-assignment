@@ -13,4 +13,17 @@ class Sacco extends Model
     {
         return $this->hasMany('App\Individual');
     }
+
+    /**
+     * Get the Individual records associated with a particular SACCO
+    */
+    public function transactions()
+    {
+        return $this->hasManyThrough('App\Transaction', 'App\Individual',
+        'sacco_id', // Foreign key on Individuals table...
+        'individual_id', // Foreign key on Transactions table...
+        'id', // Local key on saccos table...
+        'id' // Local key on Individuals table...
+        );
+    }
 }
