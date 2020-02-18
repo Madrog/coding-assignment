@@ -11,16 +11,34 @@
 
 <script>
 export default {
-    methods: {
-        handleFileUpload() {
-            this.file = this.$refs.file.files[0];
-        }
-    },
     data() {
         return {
             file: ''
         }
-    }
+    },
 
+    methods: {
+        submitFile(){
+            let formData = new FormData();
+
+            formData.append('file', this.file);
+
+            axios.post('/single-file',
+                formData, {
+                    headers: {
+                        'Content-Type' : 'multipart/form-data'
+                    }
+                }
+            ).then(function(){
+                console.long('SUCCESS!!');
+            })
+            .catch(function(){
+                console.long('FAILURE!!');
+            });
+        },
+        handleFileUpload() {
+            this.file = this.$refs.file.files[0];
+        }
+    }
 }
 </script>

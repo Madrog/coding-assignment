@@ -3,17 +3,16 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
+                    <div class="panel-heading">Example Component</div>
+
                     <br>
                     <hr>
                     <br>
-                    <div class="panel-heading">Menu</div>
+                    <div class="panel-heading">Vuejs also welcomes you!</div>
                     <br>
                     <div class="panel-body">
-                        <ul>
-                            <li><a href="#">Individuals</a></li>
-                            <li><a href="#">SACCOs</a></li>
-                            <li><a href="#">Transactions</a></li>
-                        </ul>
+                        I'm an example component!
+                        This is vue code being loaded!
                     </div>
                 </div>
             </div>
