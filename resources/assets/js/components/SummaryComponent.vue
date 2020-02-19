@@ -12,23 +12,23 @@
                     <table class="table table-striped" width="100%">
                         <tr>
                             <td>Total Number of Transactions</td>
-                            <td>{{summary.data.data.tot_num_of_trans}}</td>
+                            <td>{{summary.data.data.tot_num_of_trans | currency}}</td>
                         </tr>
                         <tr>
                             <td>Total Amount of Deposits</td>
-                            <td>{{summary.data.data.tot_amt_of_dep}}</td>
+                            <td>{{summary.data.data.tot_amt_of_dep | currency}}</td>
                         </tr>
                         <tr>
                             <td>Total Amount of Withdrawals</td>
-                            <td>{{summary.data.data.tot_amt_of_with}}</td>
+                            <td>{{summary.data.data.tot_amt_of_with | currency }}</td>
                         </tr>
                         <tr>
                             <td>Average Amount per Deposit</td>
-                            <td>{{summary.data.data.avg_amt_per_dep}}</td>
+                            <td>{{summary.data.data.avg_amt_per_dep | currency }}</td>
                         </tr>
                         <tr>
                             <td>Average Amount per Withdrawal</td>
-                            <td>{{summary.data.data.avg_amt_per_with}}</td>
+                            <td>{{summary.data.data.avg_amt_per_with | currency }}</td>
                         </tr>
                     </table>
             </div>               
@@ -47,8 +47,8 @@
         },
 
         filters: {
-            currencydecimal (value) {
-            return value.toFixed(0)
+            currency (value) {
+            return 'UGX' + value.toFixed(0)
             }  
         },
 

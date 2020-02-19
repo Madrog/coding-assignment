@@ -14,6 +14,22 @@ class Sacco extends Model
         return $this->hasMany('App\Individual');
     }
 
+      /**
+     * Get the individual male record associated with one transaction
+    */
+    public function males()
+    {
+        return $this->hasMany('App\Individual')->where('gender', 'Male');
+    }
+
+    /**
+     * Get the individual male record associated with one transaction
+    */
+    public function females()
+    {
+        return $this->hasMany('App\Individual')->where('gender', 'Female');
+    }
+
     /**
      * Get the Individual records associated with a particular SACCO
     */

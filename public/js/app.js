@@ -44738,8 +44738,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     filters: {
-        currencydecimal: function currencydecimal(value) {
-            return value.toFixed(0);
+        currency: function currency(value) {
+            return 'UGX' + value.toFixed(0);
         }
     },
 
@@ -44799,7 +44799,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(i.sacco))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(i.totdep))])
+                        _c("td", [_vm._v(_vm._s(_vm._f("currency")(i.totdep)))])
                       ])
                     })
                   ],
@@ -44945,10 +44945,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     filters: {
-        currencydecimal: function currencydecimal(value) {
-            return value.toFixed(0);
+        currency: function currency(value) {
+            return 'UGX' + value.toFixed(0);
         }
     },
+
     mounted: function mounted() {
         var _this = this;
 
@@ -45001,19 +45002,33 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(s.country))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(s.totdep))]),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("currency")(s.totdep)))
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(s.totwith))]),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("currency")(s.totwith)))
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(s.totnet))]),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("currency")(s.totnet)))
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(s.totdepmen))]),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("currency")(s.totdepmen)))
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(s.totwithmen))]),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("currency")(s.totdepwomen)))
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(s.totdepwomen))]),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("currency")(s.totwithmen)))
+                        ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(s.totwithwomen))])
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("currency")(s.totwithwomen)))
+                        ])
                       ])
                     })
                   ],
@@ -45041,13 +45056,13 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("td", [_vm._v("Total Net Amount")]),
       _vm._v(" "),
-      _c("td", [_vm._v("Total Deposits By Male")]),
+      _c("td", [_vm._v("Deposits By Males")]),
       _vm._v(" "),
-      _c("td", [_vm._v("Total Withdrawals By Male")]),
+      _c("td", [_vm._v("Deposits By Females")]),
       _vm._v(" "),
-      _c("td", [_vm._v("Total Deposits By Female")]),
+      _c("td", [_vm._v("Withdrawals By Males")]),
       _vm._v(" "),
-      _c("td", [_vm._v("Total Withdrawals By Female")])
+      _c("td", [_vm._v("Withdrawals By Females")])
     ])
   }
 ]
@@ -45286,6 +45301,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -45298,8 +45314,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     filters: {
-        currencydecimal: function currencydecimal(value) {
-            return value.toFixed(0);
+        currency: function currency(value) {
+            return 'UGX' + value.toFixed(0);
         }
     },
 
@@ -45338,6 +45354,8 @@ var render = function() {
           _vm.loading
             ? _c("div", [_vm._v("Loading...")])
             : _c("div", [
+                _c("div", { staticClass: "m-b-md" }, [_vm._v("Index")]),
+                _vm._v(" "),
                 _c(
                   "table",
                   {
@@ -45355,7 +45373,9 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(t.sacco))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(t.amount))]),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("currency")(t.amount)))
+                        ]),
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(t.type))])
                       ])
@@ -45497,8 +45517,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     filters: {
-        currencydecimal: function currencydecimal(value) {
-            return value.toFixed(0);
+        currency: function currency(value) {
+            return 'UGX' + value.toFixed(0);
         }
     },
 
@@ -45537,47 +45557,86 @@ var render = function() {
           _vm.loading
             ? _c("div", [_vm._v("Loading...")])
             : _c("div", [
-                _c("table", { staticClass: "table table-striped" }, [
-                  _c("tr", [
-                    _c("td", [_vm._v("Total Number of Transactions")]),
+                _c("div", { staticClass: "m-b-md" }, [_vm._v("Summary")]),
+                _vm._v(" "),
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-striped",
+                    attrs: { width: "100%" }
+                  },
+                  [
+                    _c("tr", [
+                      _c("td", [_vm._v("Total Number of Transactions")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("currency")(
+                              _vm.summary.data.data.tot_num_of_trans
+                            )
+                          )
+                        )
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c("td", [
-                      _vm._v(_vm._s(_vm.summary.data.data.tot_num_of_trans))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("Total Amount of Deposits")]),
+                    _c("tr", [
+                      _c("td", [_vm._v("Total Amount of Deposits")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("currency")(
+                              _vm.summary.data.data.tot_amt_of_dep
+                            )
+                          )
+                        )
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c("td", [
-                      _vm._v(_vm._s(_vm.summary.data.data.tot_amt_of_dep))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("Total Amount of Withdrawals")]),
+                    _c("tr", [
+                      _c("td", [_vm._v("Total Amount of Withdrawals")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("currency")(
+                              _vm.summary.data.data.tot_amt_of_with
+                            )
+                          )
+                        )
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c("td", [
-                      _vm._v(_vm._s(_vm.summary.data.data.tot_amt_of_with))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("Average Amount per Deposit")]),
+                    _c("tr", [
+                      _c("td", [_vm._v("Average Amount per Deposit")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("currency")(
+                              _vm.summary.data.data.avg_amt_per_dep
+                            )
+                          )
+                        )
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c("td", [
-                      _vm._v(_vm._s(_vm.summary.data.data.avg_amt_per_dep))
+                    _c("tr", [
+                      _c("td", [_vm._v("Average Amount per Withdrawal")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(
+                            _vm._f("currency")(
+                              _vm.summary.data.data.avg_amt_per_with
+                            )
+                          )
+                        )
+                      ])
                     ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("Average Amount per Withdrawal")]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _vm._v(_vm._s(_vm.summary.data.data.avg_amt_per_with))
-                    ])
-                  ])
-                ])
+                  ]
+                )
               ])
         ])
   ])

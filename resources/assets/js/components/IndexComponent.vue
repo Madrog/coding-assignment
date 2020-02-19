@@ -21,7 +21,7 @@
                         <td>{{ t.id }}</td>
                         <td>{{ t.name }}</td>
                         <td>{{ t.sacco }}</td>
-                        <td>{{ t.amount }}</td>
+                        <td>{{ t.amount | currency }}</td>
                         <td>{{ t.type }}</td>  
                     </tr>
                 </table>
@@ -41,8 +41,8 @@
         },
 
         filters: {
-            currencydecimal (value) {
-            return value.toFixed(0)
+            currency (value) {
+            return 'UGX' + value.toFixed(0)
             }  
         },
 

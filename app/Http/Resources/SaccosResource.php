@@ -23,15 +23,13 @@ class SaccosResource extends Resource
         $total_withdrawal = $withdrawals->sum('amount');
         $total_net_amount = $total_deposit - $total_withdrawal;
 
-        //$coll = collect(IndividualResource::collection($this->individuals));
-
-        //$men = $coll->where('gender', 'Male');
-        //$women = $coll->where('gender', 'Female');
+        //$men = collect(IndividualResource::collection($this->males));;
+        //$women = collect(IndividualResource::collection($this->females));;
 
         $total_dep_men = 0; //$men->sum('totdep');
         $total_dep_women = 0; //$women->sum('totdep');
 
-        $total_with_men = 0; //$men->sum('totwith');
+        $total_with_men = 0; // $men->sum('totwith');
         $total_with_women = 0; //$women->sum('totwith');
 
         return [  

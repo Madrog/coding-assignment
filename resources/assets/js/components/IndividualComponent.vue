@@ -24,7 +24,7 @@
                     <td>{{ i.email }}</td>
                     <td>{{ i.gender }}</td>
                     <td>{{ i.sacco }}</td>
-                    <td>{{ i.totdep }}</td>   
+                    <td>{{ i.totdep | currency }}</td>   
                 </tr>
                 </table> 
             </div>
@@ -43,8 +43,8 @@
         },
 
         filters: {
-            currencydecimal (value) {
-            return value.toFixed(0)
+            currency (value) {
+            return 'UGX' + value.toFixed(0)
             }  
         },
 

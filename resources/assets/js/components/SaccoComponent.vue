@@ -17,22 +17,22 @@
                         <td>Total Deposits</td>
                         <td>Total Withdrawals</td>
                         <td>Total Net Amount</td>
-                        <td>Total Deposits By Male</td>
-                        <td>Total Withdrawals By Male</td>
-                        <td>Total Deposits By Female</td>
-                        <td>Total Withdrawals By Female</td>
+                        <td>Deposits By Males</td>
+                        <td>Deposits By Females</td>
+                        <td>Withdrawals By Males</td>                     
+                        <td>Withdrawals By Females</td>
                     </tr>
                     <tr  v-for="s in info.data.data">
                         <td>{{ s.id }}</td>
                         <td>{{ s.name }}</td>
                         <td>{{ s.country }}</td>
-                        <td>{{ s.totdep }}</td>
-                        <td>{{ s.totwith }}</td>
-                        <td>{{ s.totnet }}</td>
-                        <td>{{ s.totdepmen }}</td>
-                        <td>{{ s.totwithmen }}</td>
-                        <td>{{ s.totdepwomen }}</td>
-                        <td>{{ s.totwithwomen }}</td>   
+                        <td>{{ s.totdep | currency }}</td>
+                        <td>{{ s.totwith  | currency  }}</td>
+                        <td>{{ s.totnet  | currency  }}</td>
+                        <td>{{ s.totdepmen  | currency  }}</td>
+                        <td>{{ s.totdepwomen  | currency  }}</td>
+                        <td>{{ s.totwithmen  | currency  }}</td>                        
+                        <td>{{ s.totwithwomen  | currency  }}</td>   
                     </tr>
                 </table>
             </div>
@@ -51,10 +51,11 @@
         },
 
         filters: {
-            currencydecimal (value) {
-            return value.toFixed(0)
+            currency (value) {
+            return 'UGX' + value.toFixed(0)
             }  
-        },   
+        },
+
         mounted() {
             axios
             .get('/api/saccos')
