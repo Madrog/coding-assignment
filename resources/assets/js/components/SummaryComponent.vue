@@ -1,16 +1,15 @@
 <template>
     <div class="section">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <br>
-                    <hr>
-                    <br>
-                    <div class="panel-heading">Summary</div>
-                    <br>
-                    <div class="panel-body">
+         <section v-if="errored">
+            <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+        </section>
 
-                    <table>
+        <section v-else>
+            <div v-if="loading">Loading...</div>
+
+            <div v-else>
+                <div class="m-b-md">Summary</div>
+                    <table class="table table-striped" width="100%">
                         <tr>
                             <td>Total Number of Transactions</td>
                             <td>{{summary.data.data.tot_num_of_trans}}</td>
@@ -32,10 +31,8 @@
                             <td>{{summary.data.data.avg_amt_per_with}}</td>
                         </tr>
                     </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </div>               
+        </section>
     </div>
 </template>
 

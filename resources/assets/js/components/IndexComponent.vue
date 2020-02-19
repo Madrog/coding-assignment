@@ -1,21 +1,32 @@
 <template>
      <div class="section">
-        <table class="table table-striped" width="100%">
-            <tr>
-                <td>#</td>
-                <td>Name</td>
-                <td>SACCOs</td>
-                <td>Amount</td>
-                <td>Type</td>
-            </tr>
-            <tr v-for="t in top50.data">
-                <td>{{ t.id }}</td>
-                <td>{{ t.name }}</td>
-                <td>{{ t.sacco }}</td>
-                <td>{{ t.amount }}</td>
-                <td>{{ t.type }}</td>  
-            </tr>
-        </table>
+         <section v-if="errored">
+            <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+        </section>
+
+        <section v-else>
+            <div v-if="loading">Loading...</div>
+
+            <div v-else>
+                <div class="m-b-md">Index</div>
+                <table class="table table-striped" width="100%">
+                    <tr>
+                        <td>#</td>
+                        <td>Name</td>
+                        <td>SACCOs</td>
+                        <td>Amount</td>
+                        <td>Type</td>
+                    </tr>
+                    <tr v-for="t in top50.data">
+                        <td>{{ t.id }}</td>
+                        <td>{{ t.name }}</td>
+                        <td>{{ t.sacco }}</td>
+                        <td>{{ t.amount }}</td>
+                        <td>{{ t.type }}</td>  
+                    </tr>
+                </table>
+            </div>
+        </section>
     </div>
 </template>
 

@@ -45276,6 +45276,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -45316,28 +45326,45 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "section" }, [
-    _c(
-      "table",
-      { staticClass: "table table-striped", attrs: { width: "100%" } },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.top50.data, function(t) {
-          return _c("tr", [
-            _c("td", [_vm._v(_vm._s(t.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.sacco))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.amount))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(t.type))])
+    _vm.errored
+      ? _c("section", [
+          _c("p", [
+            _vm._v(
+              "We're sorry, we're not able to retrieve this information at the moment, please try back later"
+            )
           ])
-        })
-      ],
-      2
-    )
+        ])
+      : _c("section", [
+          _vm.loading
+            ? _c("div", [_vm._v("Loading...")])
+            : _c("div", [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-striped",
+                    attrs: { width: "100%" }
+                  },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.top50.data, function(t) {
+                      return _c("tr", [
+                        _c("td", [_vm._v(_vm._s(t.id))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(t.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(t.sacco))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(t.amount))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(t.type))])
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ])
+        ])
   ])
 }
 var staticRenderFns = [
@@ -45458,9 +45485,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -45501,63 +45525,61 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "section" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _c("br"),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-heading" }, [_vm._v("Summary")]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("table", [
-              _c("tr", [
-                _c("td", [_vm._v("Total Number of Transactions")]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(_vm._s(_vm.summary.data.data.tot_num_of_trans))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Total Amount of Deposits")]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(_vm.summary.data.data.tot_amt_of_dep))])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Total Amount of Withdrawals")]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(_vm._s(_vm.summary.data.data.tot_amt_of_with))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Average Amount per Deposit")]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(_vm._s(_vm.summary.data.data.avg_amt_per_dep))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("Average Amount per Withdrawal")]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(_vm._s(_vm.summary.data.data.avg_amt_per_with))
-                ])
-              ])
-            ])
+    _vm.errored
+      ? _c("section", [
+          _c("p", [
+            _vm._v(
+              "We're sorry, we're not able to retrieve this information at the moment, please try back later"
+            )
           ])
         ])
-      ])
-    ])
+      : _c("section", [
+          _vm.loading
+            ? _c("div", [_vm._v("Loading...")])
+            : _c("div", [
+                _c("table", { staticClass: "table table-striped" }, [
+                  _c("tr", [
+                    _c("td", [_vm._v("Total Number of Transactions")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.summary.data.data.tot_num_of_trans))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Total Amount of Deposits")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.summary.data.data.tot_amt_of_dep))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Total Amount of Withdrawals")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.summary.data.data.tot_amt_of_with))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Average Amount per Deposit")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.summary.data.data.avg_amt_per_dep))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Average Amount per Withdrawal")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.summary.data.data.avg_amt_per_with))
+                    ])
+                  ])
+                ])
+              ])
+        ])
   ])
 }
 var staticRenderFns = []
