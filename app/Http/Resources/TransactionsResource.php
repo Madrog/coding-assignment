@@ -6,6 +6,7 @@ use Illuminate\Http\Resources\Json\Resource;
 
 class TransactionsResource extends Resource
 {
+
     /**
      * Transform the resource into an array.
      *
@@ -14,11 +15,15 @@ class TransactionsResource extends Resource
      */
     public function toArray($request)
     {
+        $name = $this->individual->first_name.' '.$this->individual->last_name;
+ 
         return [
             'id' => $this->id,
-            'individual_id' => $this->individual_id,
+            'name' => $name,
+            'sacco' => $this->individual->sacco_id,
             'amount' => $this->amount,
             'type' => $this->type
         ];
     }
+
 }

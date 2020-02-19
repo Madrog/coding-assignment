@@ -15,14 +15,11 @@ class TransactionsCollection extends ResourceCollection
     public function toArray($request)
     {
         return  [
-            'data' => $this->collection,
-            'meta' => [
-                'total_number_of_transactions' => $this->collection->count(),
-                'total_amount_of_deposits' => $this->collection->where('type', 'deposit')->sum('amount'),
-                'total_amount_of_withdrawals' => $this->collection->where('type', 'withdrawal')->sum('amount'),
-                'average_amount_per_deposit' => $this->collection->where('type', 'deposit')->avg('amount'),
-                'average_amount_per_withdrawal' => $this->collection->where('type', 'withdrawal')->avg('amount'),
-            ],
-        ];;
+            'tot_num_of_trans' => $this->collection->count(),
+            'tot_amt_of_dep' => $this->collection->where('type', 'deposit')->sum('amount'),
+            'tot_amt_of_with' => $this->collection->where('type', 'withdrawal')->sum('amount'),
+            'avg_amt_per_dep' => $this->collection->where('type', 'deposit')->avg('amount'),
+            'avg_amt_per_with' => $this->collection->where('type', 'withdrawal')->avg('amount')
+        ];
     }
 }

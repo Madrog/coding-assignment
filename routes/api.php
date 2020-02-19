@@ -50,10 +50,11 @@ Route::get('/transactions/{id}', function(transaction $id) {
     return new TransactionsResource($id);
 });
 
-Route::get('/transactions', function(){
-    $collection = collect(TransactionsResource::collection(Transaction::all()));
-    $sorted = $collection->sortByDesc('id');
-    $sorted->values()->all();
-    $transactions = $sorted->take(50);
+Route::get('/index', function(){
+    $transactions = collect(TransactionsResource::collection(Transaction::all()->sortByDesc('id')->take(50)));
     return $transactions;
+});
+
+Route::get('/summary', function(){
+    return new TransactionsCollection(Transaction::all());
 });

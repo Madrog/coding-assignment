@@ -44727,12 +44727,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return value.toFixed(0);
         }
     },
-
     mounted: function mounted() {
         var _this = this;
 
         axios.get('/api/saccos').then(function (response) {
-            _this.saccos = response;
+            _this.saccos = response.data;
         }).catch(function (error) {
             console.log(error);
             _this.errored = true;

@@ -34,9 +34,7 @@
             currencydecimal (value) {
             return value.toFixed(0)
             }  
-        },
-
-        
+        },   
         mounted() {
             axios
             .get('/api/saccos')
