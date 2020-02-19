@@ -14,10 +14,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('individual-component', require('./components/IndividualComponent.vue'));
+//Vue.component('individual-component', require('./components/IndividualComponent.vue'));
 Vue.component('sacco-component', require('./components/SaccoComponent.vue'));
-Vue.component('transaction-component', require('./components/TransactionComponent.vue'));
-Vue.component('simple-upload', require('./components/SimpleUpload.vue'));
+//Vue.component('transaction-component', require('./components/TransactionComponent.vue'));
+//Vue.component('simple-upload', require('./components/SimpleUpload.vue'));
 
 console.log('LOADING VUE');
 

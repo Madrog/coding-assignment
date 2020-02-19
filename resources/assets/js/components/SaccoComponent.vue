@@ -10,32 +10,8 @@
                     <div class="panel-heading">SACCOs</div>
                     <br>
                     <div class="panel-body">
-                        <table class="table table-bordered" width="100%">
-                            <tr>
-                                <td>#</td>
-                                <td>SACCOs</td>
-                                <td>Country</td>
-                                <td>Total Deposits</td>
-                                <td>Total Withdrawals</td>
-                                <td>Total Net Amount</td>
-                                <td>Total Deposits By Male</td>
-                                <td>Total Withdrawals By Male</td>
-                                <td>Total Deposits By Female</td>
-                                <td>Total Withdrawals By Female</td>
-                            </tr>
-                            <tr v-for="s in saccos" v-bind:key="s.id">
-                                <td>{{ s.id }}</td>
-                                <td>{{ s.name }}</td>
-                                <td>{{ s.country }}</td>
-                                <td>{{ s.totdep }}</td>
-                                <td>{{ s.totwith }}</td>
-                                <td>{{ s.totnet }}</td>
-                                <td>{{ s.totdepmen }}</td>
-                                <td>{{ s.totwithmen }}</td>
-                                <td>{{ s.totdepwomen }}</td>
-                                <td>{{ s.totwithwomen }}</td>   
-                            </tr>
-                        </table>
+                        data goes here
+                        {{ saccos }}
                     </div>
                 </div>
             </div>
@@ -65,7 +41,7 @@
             axios
             .get('/api/saccos')
             .then(response => {
-                this.saccos = response
+                this.saccos = response.data
             })
             .catch(error => {
                 console.log(error)
