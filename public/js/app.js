@@ -44715,6 +44715,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -44755,30 +44766,47 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "section" }, [
-    _c(
-      "table",
-      { staticClass: "table table-striped", attrs: { width: "100%" } },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.individuals.data, function(i) {
-          return _c("tr", [
-            _c("td", [_vm._v(_vm._s(i.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(i.name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(i.email))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(i.gender))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(i.sacco))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(i.totdep))])
+    _vm.errored
+      ? _c("section", [
+          _c("p", [
+            _vm._v(
+              "We're sorry, we're not able to retrieve this information at the moment, please try back later"
+            )
           ])
-        })
-      ],
-      2
-    )
+        ])
+      : _c("section", [
+          _vm.loading
+            ? _c("div", [_vm._v("Loading...")])
+            : _c("div", [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-striped",
+                    attrs: { width: "100%" }
+                  },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.individuals.data, function(i) {
+                      return _c("tr", [
+                        _c("td", [_vm._v(_vm._s(i.id))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(i.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(i.email))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(i.gender))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(i.sacco))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(i.totdep))])
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ])
+        ])
   ])
 }
 var staticRenderFns = [
@@ -44894,11 +44922,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            saccos: null,
+            info: null,
             loading: true,
             errored: false
         };
@@ -44914,7 +44953,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         axios.get('/api/saccos').then(function (response) {
-            _this.saccos = response;
+            _this.info = response;
         }).catch(function (error) {
             console.log(error);
             _this.errored = true;
@@ -44933,38 +44972,55 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "section" }, [
-    _c(
-      "table",
-      { staticClass: "table table-striped", attrs: { width: "100%" } },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.saccos.data, function(s) {
-          return _c("tr", [
-            _c("td", [_vm._v(_vm._s(s.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(s.name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(s.country))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(s.totdep))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(s.totwith))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(s.totnet))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(s.totdepmen))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(s.totwithmen))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(s.totdepwomen))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(s.totwithwomen))])
+    _vm.errored
+      ? _c("section", [
+          _c("p", [
+            _vm._v(
+              "We're sorry, we're not able to retrieve this information at the moment, please try back later"
+            )
           ])
-        })
-      ],
-      2
-    )
+        ])
+      : _c("section", [
+          _vm.loading
+            ? _c("div", [_vm._v("Loading...")])
+            : _c("div", [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-striped",
+                    attrs: { width: "100%" }
+                  },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.info.data.data, function(s) {
+                      return _c("tr", [
+                        _c("td", [_vm._v(_vm._s(s.id))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(s.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(s.country))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(s.totdep))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(s.totwith))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(s.totnet))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(s.totdepmen))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(s.totwithmen))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(s.totdepwomen))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(s.totwithwomen))])
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ])
+        ])
   ])
 }
 var staticRenderFns = [
@@ -45405,7 +45461,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -45460,11 +45515,6 @@ var render = function() {
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "panel-body" }, [
-            _vm._v(
-              "\n                " +
-                _vm._s(_vm.summary) +
-                "\n\n                "
-            ),
             _c("table", [
               _c("tr", [
                 _c("td", [_vm._v("Total Number of Transactions")]),
@@ -45484,7 +45534,7 @@ var render = function() {
                 _c("td", [_vm._v("Total Amount of Withdrawals")]),
                 _vm._v(" "),
                 _c("td", [
-                  _vm._v(_vm._s(_vm.summary.data.data.tot_amt_per_with))
+                  _vm._v(_vm._s(_vm.summary.data.data.tot_amt_of_with))
                 ])
               ]),
               _vm._v(" "),

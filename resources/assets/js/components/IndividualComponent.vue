@@ -1,5 +1,14 @@
 <template>
     <div class="section">
+        
+         <section v-if="errored">
+            <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+        </section>
+
+        <section v-else>
+            <div v-if="loading">Loading...</div>
+
+            <div v-else>
                 <table class="table table-striped" width="100%">
                 <tr>
                     <td>#</td>
@@ -17,7 +26,9 @@
                     <td>{{ i.sacco }}</td>
                     <td>{{ i.totdep }}</td>   
                 </tr>
-            </table>   
+                </table> 
+            </div>
+        </section>  
     </div>
 </template>
 
