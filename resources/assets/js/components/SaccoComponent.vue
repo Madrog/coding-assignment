@@ -1,23 +1,32 @@
 <template>
     <div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <br>
-                    <hr>
-                    <br>
-                    <div class="panel-heading">SACCOs</div>
-                    <br>
-                    <div class="panel-body">
-                        data goes here
-                        {{ saccos }}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <table class="table table-striped" width="100%">
+                <tr>
+                    <td>#</td>
+                    <td>SACCOs</td>
+                    <td>Country</td>
+                    <td>Total Deposits</td>
+                    <td>Total Withdrawals</td>
+                    <td>Total Net Amount</td>
+                    <td>Total Deposits By Male</td>
+                    <td>Total Withdrawals By Male</td>
+                    <td>Total Deposits By Female</td>
+                    <td>Total Withdrawals By Female</td>
+                </tr>
+                <tr v-for="s in saccos.data">
+                    <td>{{ s.id }}</td>
+                    <td>{{ s.name }}</td>
+                    <td>{{ s.country }}</td>
+                    <td>{{ s.totdep }}</td>
+                    <td>{{ s.totwith }}</td>
+                    <td>{{ s.totnet }}</td>
+                    <td>{{ s.totdepmen }}</td>
+                    <td>{{ s.totwithmen }}</td>
+                    <td>{{ s.totdepwomen }}</td>
+                    <td>{{ s.totwithwomen }}</td>   
+                </tr>
+            </table>
     </div>
-</div>
 </template>
 
 <script>

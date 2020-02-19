@@ -1072,7 +1072,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(11);
-module.exports = __webpack_require__(55);
+module.exports = __webpack_require__(61);
 
 
 /***/ }),
@@ -1098,8 +1098,10 @@ window.Vue = __webpack_require__(36);
 Vue.component('individual-component', __webpack_require__(40));
 Vue.component('sacco-component', __webpack_require__(43));
 Vue.component('transaction-component', __webpack_require__(46));
-Vue.component('example-component', __webpack_require__(49));
-Vue.component('simple-upload', __webpack_require__(52));
+Vue.component('index-component', __webpack_require__(49));
+Vue.component('summary-component', __webpack_require__(52));
+Vue.component('example-component', __webpack_require__(55));
+Vue.component('simple-upload', __webpack_require__(58));
 
 console.log('LOADING VUE');
 
@@ -44711,6 +44713,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -44751,36 +44755,52 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "section" }, [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("br"),
+    _c(
+      "table",
+      { staticClass: "table table-striped", attrs: { width: "100%" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.individuals.data, function(i) {
+          return _c("tr", [
+            _c("td", [_vm._v(_vm._s(i.id))]),
             _vm._v(" "),
-            _c("hr"),
+            _c("td", [_vm._v(_vm._s(i.name))]),
             _vm._v(" "),
-            _c("br"),
+            _c("td", [_vm._v(_vm._s(i.email))]),
             _vm._v(" "),
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Individuals")
-            ]),
+            _c("td", [_vm._v(_vm._s(i.gender))]),
             _vm._v(" "),
-            _c("br"),
+            _c("td", [_vm._v(_vm._s(i.sacco))]),
             _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                      " +
-                  _vm._s(_vm.individuals) +
-                  "\n                    "
-              )
-            ])
+            _c("td", [_vm._v(_vm._s(i.totdep))])
           ])
-        ])
-      ])
-    ])
+        })
+      ],
+      2
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("#")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Email")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Gender")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("SACCO")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Total Deposit")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -44865,6 +44885,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -44904,34 +44933,68 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "section" }, [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("br"),
+    _c(
+      "table",
+      { staticClass: "table table-striped", attrs: { width: "100%" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.saccos.data, function(s) {
+          return _c("tr", [
+            _c("td", [_vm._v(_vm._s(s.id))]),
             _vm._v(" "),
-            _c("hr"),
+            _c("td", [_vm._v(_vm._s(s.name))]),
             _vm._v(" "),
-            _c("br"),
+            _c("td", [_vm._v(_vm._s(s.country))]),
             _vm._v(" "),
-            _c("div", { staticClass: "panel-heading" }, [_vm._v("SACCOs")]),
+            _c("td", [_vm._v(_vm._s(s.totdep))]),
             _vm._v(" "),
-            _c("br"),
+            _c("td", [_vm._v(_vm._s(s.totwith))]),
             _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                        data goes here\n                        " +
-                  _vm._s(_vm.saccos) +
-                  "\n                    "
-              )
-            ])
+            _c("td", [_vm._v(_vm._s(s.totnet))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(s.totdepmen))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(s.totwithmen))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(s.totdepwomen))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(s.totwithwomen))])
           ])
-        ])
-      ])
-    ])
+        })
+      ],
+      2
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("#")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("SACCOs")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Country")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Total Deposits")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Total Withdrawals")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Total Net Amount")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Total Deposits By Male")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Total Withdrawals By Male")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Total Deposits By Female")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Total Withdrawals By Female")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -45109,7 +45172,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/ExampleComponent.vue"
+Component.options.__file = "resources/assets/js/components/IndexComponent.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -45118,9 +45181,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7168fb6a", Component.options)
+    hotAPI.createRecord("data-v-3d7cee7c", Component.options)
   } else {
-    hotAPI.reload("data-v-7168fb6a", Component.options)
+    hotAPI.reload("data-v-3d7cee7c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -45157,6 +45220,380 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            top50: null,
+            loading: true,
+            errored: false
+        };
+    },
+
+
+    filters: {
+        currencydecimal: function currencydecimal(value) {
+            return value.toFixed(0);
+        }
+    },
+
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/api/index').then(function (response) {
+            _this.top50 = response;
+        }).catch(function (error) {
+            console.log(error);
+            _this.errored = true;
+        }).finally(function () {
+            return _this.loading = false;
+        });
+    }
+});
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "section" }, [
+    _c(
+      "table",
+      { staticClass: "table table-striped", attrs: { width: "100%" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.top50.data, function(t) {
+          return _c("tr", [
+            _c("td", [_vm._v(_vm._s(t.id))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(t.name))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(t.sacco))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(t.amount))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(t.type))])
+          ])
+        })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("#")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("SACCOs")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Amount")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Type")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3d7cee7c", module.exports)
+  }
+}
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(53)
+/* template */
+var __vue_template__ = __webpack_require__(54)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/SummaryComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-730666ae", Component.options)
+  } else {
+    hotAPI.reload("data-v-730666ae", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            summary: null,
+            loading: true,
+            errored: false
+        };
+    },
+
+
+    filters: {
+        currencydecimal: function currencydecimal(value) {
+            return value.toFixed(0);
+        }
+    },
+
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/api/summary').then(function (response) {
+            _this.summary = response;
+        }).catch(function (error) {
+            console.log(error);
+            _this.errored = true;
+        }).finally(function () {
+            return _this.loading = false;
+        });
+    }
+});
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "section" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
+        _c("div", { staticClass: "panel panel-default" }, [
+          _c("br"),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-heading" }, [_vm._v("Summary")]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.summary) +
+                "\n\n                "
+            ),
+            _c("table", [
+              _c("tr", [
+                _c("td", [_vm._v("Total Number of Transactions")]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(_vm._s(_vm.summary.data.data.tot_num_of_trans))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Total Amount of Deposits")]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(_vm.summary.data.data.tot_amt_of_dep))])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Total Amount of Withdrawals")]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(_vm._s(_vm.summary.data.data.tot_amt_per_with))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Average Amount per Deposit")]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(_vm._s(_vm.summary.data.data.avg_amt_per_dep))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("Average Amount per Withdrawal")]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(_vm._s(_vm.summary.data.data.avg_amt_per_with))
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-730666ae", module.exports)
+  }
+}
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(56)
+/* template */
+var __vue_template__ = __webpack_require__(57)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/ExampleComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7168fb6a", Component.options)
+  } else {
+    hotAPI.reload("data-v-7168fb6a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45166,7 +45603,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 51 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -45221,15 +45658,15 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(53)
+var __vue_script__ = __webpack_require__(59)
 /* template */
-var __vue_template__ = __webpack_require__(54)
+var __vue_template__ = __webpack_require__(60)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -45268,11 +45705,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 53 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -45291,7 +45732,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 54 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -45305,15 +45746,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("form", { attrs: { enctype: "multipart/form-data" } }, [
-      _c("div", { staticClass: "field" }, [
-        _c("label", { staticClass: "label", attrs: { for: "file" } }, [
-          _vm._v("Upload File")
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("input", { attrs: { type: "file" } })
+    return _c("div", { staticClass: "section" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("form", { attrs: { enctype: "multipart/form-data" } }, [
+          _c("div", { staticClass: "field" }, [
+            _c("label", { staticClass: "label", attrs: { for: "file" } }, [
+              _vm._v("Upload File")
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("input", { attrs: { type: "file" } })
+          ])
+        ])
       ])
     ])
   }
@@ -45328,7 +45773,7 @@ if (false) {
 }
 
 /***/ }),
-/* 55 */
+/* 61 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

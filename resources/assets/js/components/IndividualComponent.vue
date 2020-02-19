@@ -1,22 +1,24 @@
 <template>
     <div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <br>
-                    <hr>
-                    <br>
-                    <div class="panel-heading">Individuals</div>
-                    <br>
-                    <div class="panel-body">
-                      {{ individuals }}
-                    </div>
-                </div>
-            </div>
-        </div>
+                <table class="table table-striped" width="100%">
+                <tr>
+                    <td>#</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Gender</td>
+                    <td>SACCO</td>
+                    <td>Total Deposit</td>
+                </tr>
+                <tr v-for="i in individuals.data">
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.gender }}</td>
+                    <td>{{ i.sacco }}</td>
+                    <td>{{ i.totdep }}</td>   
+                </tr>
+            </table>   
     </div>
-</div>
 </template>
 
 <script>

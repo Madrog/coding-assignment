@@ -17,6 +17,8 @@ window.Vue = require('vue');
 Vue.component('individual-component', require('./components/IndividualComponent.vue'));
 Vue.component('sacco-component', require('./components/SaccoComponent.vue'));
 Vue.component('transaction-component', require('./components/TransactionComponent.vue'));
+Vue.component('index-component', require('./components/IndexComponent.vue'));
+Vue.component('summary-component', require('./components/SummaryComponent.vue'));
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('simple-upload', require('./components/SimpleUpload.vue'));
 
