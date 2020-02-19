@@ -11,7 +11,7 @@
                     to the Ensibuuko Coding Assignment
                 </p>
                 <div id="app">
-                    <sacco-component></sacco-component>
+                    <example-component></example-component>
                 </div>
             </div>
         

@@ -2,7 +2,9 @@
 
 
 @section('content')
-    <h1>INDIVIDUALS</h1>
+    <div class="title m-b-md">
+        Individuals
+    </div>
     <div id="app">
         <individual-component></individual-component>
     </div>

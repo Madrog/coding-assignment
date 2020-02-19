@@ -39,7 +39,7 @@
             axios
             .get('/api/saccos')
             .then(response => {
-                this.saccos = response.data
+                this.saccos = response
             })
             .catch(error => {
                 console.log(error)

@@ -2,9 +2,8 @@
 
 
 @section('content')
-    <h1>SACCOs</h1>
+    <div class="title m-b-md">SACCOs</div>
     <div id="app">
-        <simple-upload></simple-upload>
-        <transaction-component></transaction-component>
+        <sacco-component></sacco-component>
     </div>
 @endsection

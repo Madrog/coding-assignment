@@ -10,24 +10,7 @@
                     <div class="panel-heading">Individuals</div>
                     <br>
                     <div class="panel-body">
-                        <table class="table table-bordered" width="100%">
-                            <tr>
-                                <td>#</td>
-                                <td>Name</td>
-                                <td>Email</td>
-                                <td>Gender</td>
-                                <td>SACCO</td>
-                                <td>Total Deposit</td>
-                            </tr>
-                            <tr v-for="i in individuals" v-bind:key="i.id">
-                                <td>{{ i.id }}</td>
-                                <td>{{ i.name }}</td>
-                                <td>{{ i.email }}</td>
-                                <td>{{ i.gender }}</td>
-                                <td>{{ i.sacco }}</td>
-                                <td>{{ i.totdep }}</td>   
-                            </tr>
-                        </table>
+                      {{ individuals }}
                     </div>
                 </div>
             </div>
