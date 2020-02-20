@@ -45857,9 +45857,114 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "SimpleUpload"
+    data: function data() {
+        return {
+            channel_name: '',
+            channel_fields: [],
+            channel_entries: [],
+            parse_header: [],
+            parse_csv: [],
+            sortOrders: {},
+            sortKey: ''
+        };
+    },
+
+
+    filters: {
+        capitalize: function capitalize(str) {
+            return str.chartAt(0).toUpperCase() + str.slice(1);
+        }
+    },
+
+    methods: {
+        sortBy: function sortBy(key) {
+            var vm = this;
+            vm.sortKey = key;
+            vm.sortOrders[key] = vm.sortOrder[key] * -1;
+        },
+
+        csvJSON: function csvJSON(csv) {
+            var vm = this;
+            var lines = CSV.splice('\n');
+            var result = 0;
+            var headers = lines[0].split(",");
+            vm.parse_header = lines[0].split(",");
+            lines[0].split(",").forEach(function (key) {
+                vm.sortOrders[key] = 1;
+            });
+
+            lines.map(function (line, indexLine) {
+                if (indexLine < 1) return; // Jump header line
+
+                var obj = {};
+                var currentline = line.split(",");
+
+                headers.map(function (header, indexHeader) {
+                    obj[header] = currentline[indexHeader];
+                });
+                result.push(obj);
+            });
+
+            result.pop(); // remove the last item because
+
+            return result; // JavaScript object
+        },
+        loadCSV: function loadCSV(e) {
+            var vm = this;
+            if (window.FileReader) {
+                var render = new FileReader();
+                reader.readAsText(e.target.files[0]);
+                // Handle errors load
+                reader.onload = function (event) {
+                    var csv = event.target.result;
+                    vm.parse_csv = vm.csvJSON(csv);
+                };
+                reader.onerror = function (evt) {
+                    if (evt.target.error.name == "NotReadableError") {
+                        alert("Cannot read file !");
+                    }
+                };
+            } else {
+                alert('FileReader are not supported in this browser.');
+            }
+        }
+    }
 });
 
 /***/ }),
@@ -45870,26 +45975,135 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "section" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "panel panel-sm" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "label",
+              {
+                staticClass: "control-label col-sm-3 text-right",
+                attrs: { for: "csv_file" }
+              },
+              [_vm._v("CSV file to import")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-9" }, [
+              _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "file", id: "csv_file", name: "csv_file" },
+                on: {
+                  change: function($event) {
+                    return _vm.loadCSV($event)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm.parse_csv
+            ? _c(
+                "table",
+                [
+                  _c("thead", [
+                    _c(
+                      "tr",
+                      _vm._l(_vm.parse_header, function(key) {
+                        return _c(
+                          "th",
+                          {
+                            class: { active: _vm.sortKey == key },
+                            on: {
+                              click: function($event) {
+                                return _vm.sortBy(key)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm._f("capitalize")(key)) +
+                                "\n                                "
+                            ),
+                            _c(
+                              "span",
+                              {
+                                staticClass: "arrow",
+                                class: _vm.sortOrders[key]
+                              },
+                              [
+                                _vm._v(
+                                  " 0 ? 'asc' : 'dsc'\">\n                                "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.parse_csv, function(csv) {
+                    return _c(
+                      "tr",
+                      _vm._l(_vm.parse_header, function(key) {
+                        return _c("td", [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(csv[key]) +
+                              "\n                        "
+                          )
+                        ])
+                      }),
+                      0
+                    )
+                  })
+                ],
+                2
+              )
+            : _vm._e()
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "section" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("form", { attrs: { enctype: "multipart/form-data" } }, [
-          _c("div", { staticClass: "field" }, [
-            _c("label", { staticClass: "label", attrs: { for: "file" } }, [
-              _vm._v("Upload File")
-            ]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("input", { attrs: { type: "file" } })
-          ])
+    return _c("div", { staticClass: "panel-heading" }, [
+      _c("h4", [_vm._v("CSV Import")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-offset-3 col-sm-9" }, [
+      _c("div", { staticClass: "checkbox-inline" }, [
+        _c("label", { attrs: { for: "header_rows" } }, [
+          _c("input", { attrs: { type: "checkbox", id: "header_rows" } }),
+          _vm._v("File contains header row?\n                        ")
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-offset-3 col-sm-9" }, [
+      _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+        _vm._v("Parse CSV")
       ])
     ])
   }
