@@ -20,7 +20,7 @@ class TransactionsResource extends Resource
         return [
             'id' => $this->id,
             'name' => $name,
-            'sacco' => $this->individual->sacco_id,
+            'sacco' => $this->sacco[0]->name,
             'amount' => $this->amount,
             'type' => $this->type
         ];

@@ -15,8 +15,9 @@ class IndividualsCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'data' => $this->collection,
-            'meta' => ['ind_count' =>$this->collection->count()],
+            'males_count' => $this->collection->where('gender', 'Male')->count(),
+            'females_count' => $this->collection->where('gender', 'Female')->count(),
+            'ind_count' => $this->collection->count()
         ];
     }
 }

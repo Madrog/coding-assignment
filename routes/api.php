@@ -25,6 +25,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/*
+Route::resource('individuals', 'IndividualsController');
+Route::resource('saccos', 'SaccosController');
+Route::resource('Transactions', 'TransactionsController');
+*/
+
 
 Route::get('/individuals/{id}', function(Individual $id) {
     return new IndividualResource($id);

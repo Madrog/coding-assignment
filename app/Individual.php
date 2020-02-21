@@ -17,7 +17,7 @@ class Individual extends Model
     /**
      * Get the transaction records associated with a particular individual
     */
-    public function transaction()
+    public function transactions()
     {
         return $this->hasMany('App\Transaction');
     }

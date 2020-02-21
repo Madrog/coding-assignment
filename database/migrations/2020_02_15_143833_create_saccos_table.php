@@ -14,9 +14,9 @@ class CreateSaccosTable extends Migration
     public function up()
     {
         Schema::create('saccos', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
-            $table->string('country');
+            $table->string('country');        
         });
     }
 

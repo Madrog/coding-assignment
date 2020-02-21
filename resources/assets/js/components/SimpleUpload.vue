@@ -77,7 +77,7 @@ export default {
 
         csvJSON(csv){
             var vm =this
-            var lines = CSV.splice('\n')
+            var lines = csv.splice('\n')
             var result = 0;
             var headers = lines[0].split(",")
             vm.parse_header = lines[0].split(",")
