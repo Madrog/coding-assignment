@@ -6,23 +6,27 @@
                     <h4>CSV Import</h4>
                 </div>
                 <div class="panel-body">
-                    <div class="form-group">
-                        <label for="csv_file" class="control-label col-sm-3 text-right">CSV file to import</label>
-                        <div class="col-sm-9">
-                            <input type="file" id="csv_file" name="csv_file" class="form-control" @change="loadCSV($event)">
+                    <form action="./api/import" method="POST" @submit.prevent="loadCSV()">
+                        <div class="form-group">
+                            <label for="csv_file" class="control-label col-sm-3 text-right">CSV file to import</label>
+                            <div class="col-sm-9">
+                                <input type="file" id="csv_file" name="csv_file" class="form-control" @change="loadCSV($event)">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-offset-3 col-sm-9">
-                        <div class="checkbox-inline">
-                            <label for="header_rows">
-                                <input type="checkbox" id="header_rows">File contains header row?
-                            </label>
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <div class="checkbox-inline">
+                                <label for="header_rows">
+                                    <input type="checkbox" id="header_rows">File contains header row?
+                                </label>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-sm-offset-3 col-sm-9">
-                        <a href="#" class="btn btn-primary">Parse CSV</a>
-                    </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <input type="submit" class="btn btn-info" value="Import CSV">
+                            </div>
+                        </div>
+                    </form> 
 
                     <table v-if="parse_csv">
                         <thead>
@@ -41,7 +45,8 @@
                                 {{ csv[key] }}
                             </td>
                         </tr>
-                    </table>
+                    </table> 
+                              
                 </div>
             </div>
         </div>
@@ -104,8 +109,9 @@ export default {
 
         loadCSV(e){
             var vm = this
-            if(window.FileReader){
-                var render = new FileReader();
+            if(window.FileReader)
+            {
+                var reader = new FileReader();
                 reader.readAsText(e.target.files[0]);
                 // Handle errors load
                 reader.onload = function(event){

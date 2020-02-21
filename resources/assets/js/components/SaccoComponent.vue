@@ -14,25 +14,44 @@
                         <td>#</td>
                         <td>SACCOs</td>
                         <td>Country</td>
-                        <td>Total Deposits</td>
-                        <td>Total Withdrawals</td>
-                        <td>Total Net Amount</td>
-                        <td>Deposits By Males</td>
-                        <td>Deposits By Females</td>
-                        <td>Withdrawals By Males</td>                     
-                        <td>Withdrawals By Females</td>
+                        <td>Statistics</td>
                     </tr>
                     <tr  v-for="s in info.data.data">
                         <td>{{ s.id }}</td>
                         <td>{{ s.name }}</td>
                         <td>{{ s.country }}</td>
-                        <td>{{ s.totdep | currency }}</td>
-                        <td>{{ s.totwith  | currency  }}</td>
-                        <td>{{ s.totnet  | currency  }}</td>
-                        <td>{{ s.totdepmen  | currency  }}</td>
-                        <td>{{ s.totdepwomen  | currency  }}</td>
-                        <td>{{ s.totwithmen  | currency  }}</td>                        
-                        <td>{{ s.totwithwomen  | currency  }}</td>   
+                        <td>
+                             <table class="table table-striped" cellspacing="2" cellpadding="2">
+                                 <tr>
+                                    <td>Total Deposits</td>
+                                     <td>{{ s.totdep | currency }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Withdrawals</td>
+                                    <td >{{ s.totwith  | currency  }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Net Amount</td>
+                                    <td>{{ s.totnet  | currency  }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Deposits By Males</td>
+                                    <td>{{ s.totdepmen  | currency  }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Deposits By Females</td>
+                                    <td>{{ s.totdepwomen  | currency  }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Withdrawals By Males</td>
+                                    <td>{{ s.totwithmen  | currency  }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Withdrawals By Females</td>
+                                    <td>{{ s.totwithwomen  | currency  }}</td>
+                                </tr>
+                            </table>
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -52,7 +71,7 @@
 
         filters: {
             currency (value) {
-            return 'UGX' + value.toFixed(0)
+            return 'UGX ' + Number(value.toFixed(0)).toLocaleString()
             }  
         },
 

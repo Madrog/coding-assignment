@@ -44,6 +44,8 @@ Route::get('/individuals', function() {
     return $individuals->values()->all();
 });
 
+Route::post('/import', 'TransactionsController@store');
+
 Route::get('/saccos/{id}', function(Sacco $id) {
     return new SaccoResource($id);
 });

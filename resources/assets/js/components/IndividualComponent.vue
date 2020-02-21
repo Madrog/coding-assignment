@@ -44,7 +44,7 @@
 
         filters: {
             currency (value) {
-            return 'UGX' + value.toFixed(0)
+            return 'UGX ' + Number(value.toFixed(0)).toLocaleString()
             }  
         },
 

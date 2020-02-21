@@ -44739,7 +44739,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     filters: {
         currency: function currency(value) {
-            return 'UGX' + value.toFixed(0);
+            return 'UGX ' + Number(value.toFixed(0)).toLocaleString();
         }
     },
 
@@ -44930,6 +44930,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -44943,7 +44962,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     filters: {
         currency: function currency(value) {
-            return 'UGX' + value.toFixed(0);
+            return 'UGX ' + Number(value.toFixed(0)).toLocaleString();
         }
     },
 
@@ -45000,31 +45019,82 @@ var render = function() {
                         _c("td", [_vm._v(_vm._s(s.country))]),
                         _vm._v(" "),
                         _c("td", [
-                          _vm._v(_vm._s(_vm._f("currency")(s.totdep)))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(_vm._s(_vm._f("currency")(s.totwith)))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(_vm._s(_vm._f("currency")(s.totnet)))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(_vm._s(_vm._f("currency")(s.totdepmen)))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(_vm._s(_vm._f("currency")(s.totdepwomen)))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(_vm._s(_vm._f("currency")(s.totwithmen)))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(_vm._s(_vm._f("currency")(s.totwithwomen)))
+                          _c(
+                            "table",
+                            {
+                              staticClass: "table table-striped",
+                              attrs: { cellspacing: "2", cellpadding: "2" }
+                            },
+                            [
+                              _c("tr", [
+                                _c("td", [_vm._v("Total Deposits")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(_vm._s(_vm._f("currency")(s.totdep)))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("Total Withdrawals")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(_vm._s(_vm._f("currency")(s.totwith)))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("Total Net Amount")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(_vm._s(_vm._f("currency")(s.totnet)))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("Total Deposits By Males")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(_vm._f("currency")(s.totdepmen))
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("Total Deposits By Females")]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(_vm._f("currency")(s.totdepwomen))
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [
+                                  _vm._v("Total Withdrawals By Males")
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(_vm._f("currency")(s.totwithmen))
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [
+                                  _vm._v("Total Withdrawals By Females")
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(_vm._f("currency")(s.totwithwomen))
+                                  )
+                                ])
+                              ])
+                            ]
+                          )
                         ])
                       ])
                     })
@@ -45047,19 +45117,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("td", [_vm._v("Country")]),
       _vm._v(" "),
-      _c("td", [_vm._v("Total Deposits")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Total Withdrawals")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Total Net Amount")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Deposits By Males")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Deposits By Females")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Withdrawals By Males")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("Withdrawals By Females")])
+      _c("td", [_vm._v("Statistics")])
     ])
   }
 ]
@@ -45312,7 +45370,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     filters: {
         currency: function currency(value) {
-            return 'UGX' + value.toFixed(0);
+            return 'UGX' + Number(value.toFixed(0)).toLocaleString();
         }
     },
 
@@ -45515,7 +45573,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     filters: {
         currency: function currency(value) {
-            return 'UGX' + value.toFixed(0);
+
+            return 'UGX ' + Number(value.toFixed(0)).toLocaleString();
         }
     },
 
@@ -45888,6 +45947,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -45945,7 +46009,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         loadCSV: function loadCSV(e) {
             var vm = this;
             if (window.FileReader) {
-                var render = new FileReader();
+                var reader = new FileReader();
                 reader.readAsText(e.target.files[0]);
                 // Handle errors load
                 reader.onload = function (event) {
@@ -45978,32 +46042,46 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "panel-body" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              {
-                staticClass: "control-label col-sm-3 text-right",
-                attrs: { for: "csv_file" }
-              },
-              [_vm._v("CSV file to import")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "file", id: "csv_file", name: "csv_file" },
-                on: {
-                  change: function($event) {
-                    return _vm.loadCSV($event)
-                  }
+          _c(
+            "form",
+            {
+              attrs: { action: "./api/import", method: "POST" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.loadCSV()
                 }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _vm._m(2),
+              }
+            },
+            [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "control-label col-sm-3 text-right",
+                    attrs: { for: "csv_file" }
+                  },
+                  [_vm._v("CSV file to import")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-9" }, [
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "file", id: "csv_file", name: "csv_file" },
+                    on: {
+                      change: function($event) {
+                        return _vm.loadCSV($event)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2)
+            ]
+          ),
           _vm._v(" "),
           _vm.parse_csv
             ? _c(
@@ -46089,7 +46167,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "checkbox-inline" }, [
         _c("label", { attrs: { for: "header_rows" } }, [
           _c("input", { attrs: { type: "checkbox", id: "header_rows" } }),
-          _vm._v("File contains header row?\n                        ")
+          _vm._v("File contains header row?\n                            ")
         ])
       ])
     ])
@@ -46098,9 +46176,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-offset-3 col-sm-9" }, [
-      _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-        _vm._v("Parse CSV")
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "col-sm-offset-3 col-sm-9" }, [
+        _c("input", {
+          staticClass: "btn btn-info",
+          attrs: { type: "submit", value: "Import CSV" }
+        })
       ])
     ])
   }
