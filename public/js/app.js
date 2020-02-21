@@ -45370,7 +45370,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     filters: {
         currency: function currency(value) {
-            return 'UGX' + Number(value.toFixed(0)).toLocaleString();
+            return 'UGX ' + Number(value.toFixed(0)).toLocaleString();
         }
     },
 

@@ -3,10 +3,10 @@
         <div class="container">
             <div class="panel panel-sm">
                 <div class="panel-heading">
-                    <h4>CSV Import</h4>
+                    <h4>Importer</h4>
                 </div>
                 <div class="panel-body">
-                    <form action="./api/import" method="POST" @submit.prevent="loadCSV()">
+                    <form action="./api/import" method="POST" @submit="loadCSV($event)">
                         <div class="form-group">
                             <label for="csv_file" class="control-label col-sm-3 text-right">CSV file to import</label>
                             <div class="col-sm-9">
@@ -46,7 +46,7 @@
                             </td>
                         </tr>
                     </table> 
-                              
+
                 </div>
             </div>
         </div>
