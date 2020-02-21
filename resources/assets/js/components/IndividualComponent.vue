@@ -9,7 +9,7 @@
             <div v-if="loading">Loading...</div>
 
             <div v-else>
-                <table class="table table-striped" width="100%">
+                <table class="table" width="100%">
                 <tr>
                     <td>#</td>
                     <td>Name</td>

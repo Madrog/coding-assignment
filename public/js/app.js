@@ -44780,10 +44780,7 @@ var render = function() {
             : _c("div", [
                 _c(
                   "table",
-                  {
-                    staticClass: "table table-striped",
-                    attrs: { width: "100%" }
-                  },
+                  { staticClass: "table", attrs: { width: "100%" } },
                   [
                     _vm._m(0),
                     _vm._v(" "),

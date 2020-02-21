@@ -1,0 +1,6 @@
+individual_id,amount,type
+1,300000,deposit
+2,3500000,deposit
+3,40000,withdrawal
+4,30000,transfer
+5,7990,deposit

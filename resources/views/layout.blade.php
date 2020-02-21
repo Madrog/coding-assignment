@@ -59,10 +59,8 @@
     </head>
     <body>
         @include('navbar')
-        <div class="container">
-            <div class="content">
-                @yield('content')
-            </div>
+        <div class="container">           
+            @yield('content')
         </div>
     </body>
     <script src="{{ mix('/js/app.js') }}"></script>
