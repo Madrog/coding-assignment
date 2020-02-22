@@ -1,3 +1,4 @@
+
 <template>
      <div class="section">
         <div class="container">
@@ -6,7 +7,18 @@
                     <h4>Importer</h4>
                 </div>
                 <div class="panel-body">
-                    <form action="./api/import" method="POST" @submit="loadCSV($event)">
+
+                      
+                    <div v-if="success" class="alert alert-success" >
+                        Successfully Imported CSV
+                    </div>
+        
+                    <div v-if="failure" class="alert alert-danger">
+                        Failed to Import CSV
+                    </div>
+            
+
+                    <form action="./api/importCSV" method="POST"  enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="csv_file" class="control-label col-sm-3 text-right">CSV file to import</label>
                             <div class="col-sm-9">
@@ -23,30 +35,10 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <input type="submit" class="btn btn-info" value="Import CSV">
+                                <input type="submit" class="btn btn-info" value="Import CSV"  @click="submitFile()">
                             </div>
                         </div>
                     </form> 
-
-                    <table v-if="parse_csv">
-                        <thead>
-                            <tr>
-                                <th v-for="key in parse_header" 
-                                    @click="sortBy(key)"
-                                    :class="{ active: sortKey == key }">
-                                    {{ key | capitalize }}
-                                    <span class="arrow" :class="sortOrders[key]"> 0 ? 'asc' : 'dsc'">
-                                    </span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tr v-for="csv in parse_csv">
-                            <td v-for="key in parse_header">
-                                {{ csv[key] }}
-                            </td>
-                        </tr>
-                    </table> 
-
                 </div>
             </div>
         </div>
@@ -63,7 +55,9 @@ export default {
             parse_header: [],
             parse_csv: [],
             sortOrders: {},
-            sortKey: ''
+            sortKey: '',
+            success: null,
+            failure: null
         };
     },
 
@@ -78,6 +72,20 @@ export default {
             var vm = this
             vm.sortKey = key
             vm.sortOrders[key] =  vm.sortOrder[key] * -1
+        },
+
+        submitFile(){
+             axios
+            .post('./api/importCSV',
+                    this.parse_csv
+            ).then(function(){
+                console.log('SUCCESS!!');
+                success: true;
+            })
+            .catch(function(){
+                console.log('FAILURE!!');
+                failure: true
+            });
         },
 
         csvJSON(csv){
@@ -109,23 +117,18 @@ export default {
 
         loadCSV(e){
             var vm = this
-            if(window.FileReader)
-            {
                 var reader = new FileReader();
                 reader.readAsText(e.target.files[0]);
                 // Handle errors load
                 reader.onload = function(event){
                     var csv = event.target.result;
-                    vm.parse_csv = vm.csvJSON(csv)
+                    vm.parse_csv = vm.csvJSON(csv);                  
                 };
                 reader.onerror = function(evt) {
                     if(evt.target.error.name == "NotReadableError"){
                         alert("Cannot read file !");
                     }
                 };
-            } else {
-                alert('FileReader are not supported in this browser.')
-            }
         }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Transaction;
 
 class TransactionsController extends Controller
 {
@@ -34,7 +35,9 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $path = $request->file('csv_file')->getRealPath();
+
+        return (['message' => "task was successful " . $path ." ". print_r($request->all())]);
     }
 
     /**

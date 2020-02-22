@@ -31,6 +31,7 @@ Route::resource('saccos', 'SaccosController');
 Route::resource('Transactions', 'TransactionsController');
 */
 
+Route::post('/importCSV', 'ImportCSVController@importCSV');
 
 Route::get('/individuals/{id}', function(Individual $id) {
     return new IndividualResource($id);

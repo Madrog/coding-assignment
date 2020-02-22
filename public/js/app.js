@@ -45115,9 +45115,9 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("td", [_vm._v("SACCOs")]),
       _vm._v(" "),
-      _c("td", [_vm._v("Country")]),
+      _c("td", [_vm._v("COUNTRY")]),
       _vm._v(" "),
-      _c("td", [_vm._v("Statistics")])
+      _c("td", [_vm._v("STATISTICS")])
     ])
   }
 ]
@@ -45205,22 +45205,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         submitFile: function submitFile() {
-            var formData = new FormData();
-
-            formData.append('file', this.file);
-
-            axios.post('/single-file', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }).then(function () {
-                console.long('SUCCESS!!');
+            axios.post('./api/import', this.file).then(function () {
+                console.log('SUCCESS!!');
             }).catch(function () {
-                console.long('FAILURE!!');
+                console.log('FAILURE!!');
             });
         },
         handleFileUpload: function handleFileUpload() {
             this.file = this.$refs.file.files[0];
+            alert('My file: ' + this.file);
         }
     }
 });
@@ -45944,14 +45937,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -45962,7 +45947,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             parse_header: [],
             parse_csv: [],
             sortOrders: {},
-            sortKey: ''
+            sortKey: '',
+            success: null,
+            failure: null
         };
     },
 
@@ -45980,6 +45967,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             vm.sortOrders[key] = vm.sortOrder[key] * -1;
         },
 
+        submitFile: function submitFile() {
+            axios.post('./api/importCSV', this.parse_csv).then(function () {
+                console.log('SUCCESS!!');
+                success: true;
+            }).catch(function () {
+                console.log('FAILURE!!');
+                failure: true;
+            });
+        },
         csvJSON: function csvJSON(csv) {
             var vm = this;
             var lines = csv.splice('\n');
@@ -46008,22 +46004,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         loadCSV: function loadCSV(e) {
             var vm = this;
-            if (window.FileReader) {
-                var reader = new FileReader();
-                reader.readAsText(e.target.files[0]);
-                // Handle errors load
-                reader.onload = function (event) {
-                    var csv = event.target.result;
-                    vm.parse_csv = vm.csvJSON(csv);
-                };
-                reader.onerror = function (evt) {
-                    if (evt.target.error.name == "NotReadableError") {
-                        alert("Cannot read file !");
-                    }
-                };
-            } else {
-                alert('FileReader are not supported in this browser.');
-            }
+            var reader = new FileReader();
+            reader.readAsText(e.target.files[0]);
+            // Handle errors load
+            reader.onload = function (event) {
+                var csv = event.target.result;
+                vm.parse_csv = vm.csvJSON(csv);
+            };
+            reader.onerror = function (evt) {
+                if (evt.target.error.name == "NotReadableError") {
+                    alert("Cannot read file !");
+                }
+            };
         }
     }
 });
@@ -46042,15 +46034,29 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "panel-body" }, [
+          _vm.success
+            ? _c("div", { staticClass: "alert alert-success" }, [
+                _vm._v(
+                  "\n                    Successfully Imported CSV\n                "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.failure
+            ? _c("div", { staticClass: "alert alert-danger" }, [
+                _vm._v(
+                  "\n                    Failed to Import CSV\n                "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "form",
             {
-              attrs: { action: "./api/import", method: "POST" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.loadCSV()
-                }
+              attrs: {
+                action: "./api/importCSV",
+                method: "POST",
+                enctype: "multipart/form-data"
               }
             },
             [
@@ -46079,72 +46085,21 @@ var render = function() {
               _vm._v(" "),
               _vm._m(1),
               _vm._v(" "),
-              _vm._m(2)
-            ]
-          ),
-          _vm._v(" "),
-          _vm.parse_csv
-            ? _c(
-                "table",
-                [
-                  _c("thead", [
-                    _c(
-                      "tr",
-                      _vm._l(_vm.parse_header, function(key) {
-                        return _c(
-                          "th",
-                          {
-                            class: { active: _vm.sortKey == key },
-                            on: {
-                              click: function($event) {
-                                return _vm.sortBy(key)
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                " +
-                                _vm._s(_vm._f("capitalize")(key)) +
-                                "\n                                "
-                            ),
-                            _c(
-                              "span",
-                              {
-                                staticClass: "arrow",
-                                class: _vm.sortOrders[key]
-                              },
-                              [
-                                _vm._v(
-                                  " 0 ? 'asc' : 'dsc'\">\n                                "
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      }),
-                      0
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(_vm.parse_csv, function(csv) {
-                    return _c(
-                      "tr",
-                      _vm._l(_vm.parse_header, function(key) {
-                        return _c("td", [
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(csv[key]) +
-                              "\n                        "
-                          )
-                        ])
-                      }),
-                      0
-                    )
+              _c("div", { staticClass: "form-group" }, [
+                _c("div", { staticClass: "col-sm-offset-3 col-sm-9" }, [
+                  _c("input", {
+                    staticClass: "btn btn-info",
+                    attrs: { type: "submit", value: "Import CSV" },
+                    on: {
+                      click: function($event) {
+                        return _vm.submitFile()
+                      }
+                    }
                   })
-                ],
-                2
-              )
-            : _vm._e()
+                ])
+              ])
+            ]
+          )
         ])
       ])
     ])
@@ -46156,7 +46111,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-heading" }, [
-      _c("h4", [_vm._v("CSV Import")])
+      _c("h4", [_vm._v("Importer")])
     ])
   },
   function() {
@@ -46169,19 +46124,6 @@ var staticRenderFns = [
           _c("input", { attrs: { type: "checkbox", id: "header_rows" } }),
           _vm._v("File contains header row?\n                            ")
         ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "col-sm-offset-3 col-sm-9" }, [
-        _c("input", {
-          staticClass: "btn btn-info",
-          attrs: { type: "submit", value: "Import CSV" }
-        })
       ])
     ])
   }

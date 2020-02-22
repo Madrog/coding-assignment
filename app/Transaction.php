@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {   
+    public $fillable = ['individual_id', 'amount', 'type' ];
     /**
      * Get the individual record associated with one transaction
     */

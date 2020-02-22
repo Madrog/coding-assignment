@@ -13,8 +13,8 @@
                     <tr>
                         <td>#</td>
                         <td>SACCOs</td>
-                        <td>Country</td>
-                        <td>Statistics</td>
+                        <td>COUNTRY</td>
+                        <td>STATISTICS</td>
                     </tr>
                     <tr  v-for="s in info.data.data">
                         <td>{{ s.id }}</td>

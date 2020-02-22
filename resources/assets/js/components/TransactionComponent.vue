@@ -19,25 +19,18 @@ export default {
 
     methods: {
         submitFile(){
-            let formData = new FormData();
-
-            formData.append('file', this.file);
-
-            axios.post('/single-file',
-                formData, {
-                    headers: {
-                        'Content-Type' : 'multipart/form-data'
-                    }
-                }
+            axios.post('./api/import',
+                this.file
             ).then(function(){
-                console.long('SUCCESS!!');
+                console.log('SUCCESS!!');
             })
             .catch(function(){
-                console.long('FAILURE!!');
+                console.log('FAILURE!!');
             });
         },
         handleFileUpload() {
             this.file = this.$refs.file.files[0];
+            alert('My file: ' + this.file);
         }
     }
 }
