@@ -17,7 +17,6 @@
                         Failed to Import CSV
                     </div>
             
-
                     <form action="./api/importCSV" method="POST"  enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="csv_file" class="control-label col-sm-3 text-right">CSV file to import</label>

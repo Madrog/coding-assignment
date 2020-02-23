@@ -60,7 +60,7 @@ Route::get('/transactions/{id}', function(transaction $id) {
 });
 
 Route::get('/index', function(){
-    $transactions = collect(TransactionsResource::collection(Transaction::all()->sortByDesc('id')->take(50)));
+    $transactions = collect(TransactionsResource::collection(Transaction::orderBy('id', 'desc')->take(50)->get()));
     return $transactions;
 });
 

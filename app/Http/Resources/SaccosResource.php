@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
+use App\Transaction;
 
 class SaccosResource extends Resource
 {
@@ -14,18 +15,32 @@ class SaccosResource extends Resource
      */
     public function toArray($request)
     {
+        $totdep = $this->transactions->where('type', 'deposit')->sum('amount');
+        $totwith = $this->transactions->where('type', 'withdrawal')->sum('amount');
+        $totnet = $totdep - $totwith;
+
+        //$coll = collect(IndividualResource::collection($this->individuals));
+
+        $males = collect(IndividualResource::collection($this->individuals->where('gender', 'Male')));
+        $females =  collect(IndividualResource::collection($this->individuals->where('gender', 'Female')));
+
+        $totdepmen = $males->sum('totdep');; //$males;
+        $totdepwomen = $females->sum('totdep');; //$females;
+
+        $totwithmen = $males->sum('totwith');
+        $totwithwomen = $females->sum('totwith');
+
         return [  
             'id' => $this->id,
             'name' => $this->name,
             'country' => $this->country,
-            'totdep' => $this->transactions->where('type', 'deposit')->sum('amount'),
-            'totwith' => $this->transactions->where('type', 'withdrawal')->sum('amount'),
-            
-            'totnet' => 0,
-            'totdepmen' => 0,
-            'totdepwomen' => 0,
-            'totwithmen' => 0,
-            'totwithwomen' => 0
+            'totdep' => $totdep,
+            'totwith' => $totwith,           
+            'totnet' => $totnet,
+            'totdepmen' => $totdepmen,
+            'totdepwomen' => $totdepwomen,
+            'totwithmen' => $totwithmen,
+            'totwithwomen' => $totwithwomen
         ];
     }
 }
