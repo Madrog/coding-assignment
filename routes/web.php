@@ -15,12 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/export_excel', 'ImportCSVController@export');
-
-Route::get('/import_excel', 'ImportCSVController@import');
-
-Route::post('/importCSV', 'ImportCSVController@importCSV');
-
 Route::get('/individuals', function () {
     return view('individuals');
 });

@@ -33,9 +33,7 @@ Route::resource('Transactions', 'TransactionsController');
 
 Route::post('/importCSV', 'ImportCSVController@importCSV');
 
-Route::get('/individuals/{id}', function(Individual $id) {
-    return new IndividualResource($id);
-});
+Route::get('/individuals/{id}', 'IndividualApiController@getIndividual');
 
 Route::get('/individuals', function() {
     $list = collect(IndividualResource::collection(Individual::all()));
@@ -47,17 +45,13 @@ Route::get('/individuals', function() {
 
 Route::post('/import', 'TransactionsController@store');
 
-Route::get('/saccos/{id}', function(Sacco $id) {
-    return new SaccoResource($id);
-});
+Route::get('/saccos/{id}', 'SaccosApiController@getSACCO');
 
 Route::get('/saccos', function(){
     return SaccosResource::collection(Sacco::all());
 });
 
-Route::get('/transactions/{id}', function(transaction $id) {
-    return new TransactionsResource($id);
-});
+Route::get('/transactions/{id}', 'TransactionApiController@getTransaction');
 
 Route::get('/index', function(){
     $transactions = collect(TransactionsResource::collection(Transaction::orderBy('id', 'desc')->take(50)->get()));
